@@ -1,0 +1,22 @@
+{% extends 'book/base.html' %}
+{% block title %}Book Details{% endblock %}
+{% block body %}
+
+<h1>Book Details</h1>
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="col-sm-6">
+			<img src="{{book.book_image.url}}" width="400" height="500">
+			<h1>Title-{{book.book_title}}</h1>
+			<h3>Author-{{book.book_author}}</h3>
+			<h5>Publication-{{book.book_publisher}}</h5>
+
+		</div>
+	</div>
+
+</div>
+
+
+
+{% endblock %}

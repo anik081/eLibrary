@@ -1,0 +1,37 @@
+{% extends 'book/base.html' %}
+{% block body %}
+	<h1>All the books</h1>
+	<div class="row">
+		<div class="col-sm-12">
+			<ul style="list-style: none;">
+				
+			{% for book in all_books %}
+			<li>
+				<div class="col-sm-4">
+					<img src="{{book.book_image.url}}" width="300" height="400"><br>
+			    	<label style="font-size: large;">{{book.book_title}}</label><br>
+			        <label style="font-size: small;">{{book.book_author}}</label><br>
+					<a href="{% url 'book:book_details' book.id %}">
+			        <button type="button" class="btn btn-primary"> Details </button>
+			        </a>
+			        <form action="{% url 'book:book-update' book.id %}" style="display: inline;">
+			        {% csrf_token %}
+			        <input type="hidden" name="book_id" value="{{ book.id }}">
+			        <button style=""> <span class="glyphicon glyphicon-pencil"
+					area-hidden ="true"></span></button>
+					</form>
+					<form action="{% url 'book:book-delete' book.id %}" method="post" style="display: inline;">
+			        {% csrf_token %}
+			        <input type="hidden" name="book_id" value="{{ book.id }}">
+			        <button style=""> <span class="glyphicon glyphicon-trash"
+						area-hidden ="true"></span></button>
+					</form>
+		        </div>
+			</li>
+			{% endfor %}
+			
+			
+		</ul> 	
+	</div>
+		</div>
+{% endblock %}

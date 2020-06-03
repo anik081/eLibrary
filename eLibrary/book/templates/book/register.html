@@ -1,0 +1,52 @@
+{% extends 'book/base.html' %}
+{% block title %}Register{% endblock %}
+
+
+{% block body %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			<h5>Create New Account Here!</h5>
+			{% if error_message %}
+				<p>
+				<strong>{{error_message}}</strong>
+				</p>
+			{% endif %}
+				<form action="{% url 'book:register' %}" method="post">
+					{% csrf_token %}
+				  <div class="form-group">
+				    <label >User Name</label>
+				    <input type="text" class="form-control" id="first_name" name="username"  placeholder="User Name">
+				  </div> 
+				  <div class="form-group">
+				    <label >Email address</label>
+				    <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				  </div>
+				  <div class="form-group">
+				    <label >Password</label>
+				    <input type="password" name="password"  class="form-control" id="password" placeholder="Password">
+				  </div>
+				  <div class="form-group">
+				    <label >Password</label>
+				    <input type="password" name="conpassword"  class="form-control" id="conpassword" placeholder="Confirm Password">
+				  </div>
+				  <button type="submit" class="btn btn-primary">Submit</button>
+
+				  
+				
+				</form>
+
+				  <a href="{% url 'book:login' %}">
+				<h5 style="color: red">Already have an account???</h5>
+				  </a>
+		</div>
+		
+	</div>
+	
+</div>
+
+
+
+{% endblock %}
