@@ -5,7 +5,7 @@ app_name = 'book'
 
 urlpatterns =[
 	#index
-	path('',views.IndexView.as_view(), name ='index'),
+	path('index/',views.IndexView.as_view(), name ='index'),
 	#book/1
 	path('<int:pk>',views.BookDetails.as_view(), name ='book_details'),
 	#book/add
@@ -15,7 +15,7 @@ urlpatterns =[
 		#book/delete
 	path('book/<int:pk>/update/',views.UpdateBook.as_view(), name ='book-update'),
 	#books/register
-	path('register/',views.Register.as_view(), name ='register'),
+	path('',views.Register.as_view(), name ='register'),
 	path('login/',views.Login, name ='login'),
 
 
